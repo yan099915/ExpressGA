@@ -1,7 +1,6 @@
 require("dotenv").config();
 const express = require("express");
-const productRoutes = require("./routes/productRoutes");
-const serverless = require("serverless-http");
+const productRoutes = require("./src/routes/productRoutes");
 const connectDB = require("./config/db");
 
 connectDB();
@@ -18,6 +17,3 @@ app.use("/api/products", productRoutes);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
-
-module.exports = app;
-module.exports.handler = serverless(app);
